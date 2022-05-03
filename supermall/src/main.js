@@ -4,7 +4,11 @@ import router from './router/index.js'
 import store from './store'
 
 //toast弹窗封装，插件方式的封装，之后安装toast插件，app.use(toast)
-import toast from 'components/common/toast'
+//import toast from 'components/common/toast'
+//使用toast没能成功，代码用到组件构造器而vue3已经废弃也没有找到合适的替代，所以使用vant自带的toast
+import {Toast} from 'vant'
+//lazyload懒加载，延迟加载页面可使区域外的内容，使页面加载更流畅
+import {Lazyload} from 'vant'
 
 //创建事务总线的Vue.prototype.$bus = new Vue()语句不能使用，prototype语句也取消了，
 //且$on，$off，$once等事件函数也都去除了，只留下$emit()用于父子组件传数据，
@@ -15,7 +19,6 @@ import toast from 'components/common/toast'
   //使用npm install --save mitt安装完mitt后导入mitt
 import mitt from "mitt"
   
-
 /** 已废弃使用
  * Vue.prototype.$bus = new Vue()
  * screateApp().config.globalProperties.$bus */
@@ -26,5 +29,9 @@ app.config.globalProperties.$bus = new mitt()
 //把导出的router挂载到main.js
 app.use(router)
 app.use(store)
-app.use(toast)
+app.use(Toast)
+app.use(Lazyload, {
+  loading: require('./assets/img/common/placeholder.png'),
+})
 app.mount('#app')
+

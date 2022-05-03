@@ -1,7 +1,7 @@
 <template>
 <!-- 商品每项内容 -->
 <div class="goods-item" @click="itemClick">
-      <img :src="showImage" @load="imageLoad">
+      <img v-lazy="showImage" @load="imageLoad">
       <div class="goods-info">
         <!-- 流行、新款、精选分类下 展示商品名称 -->
         <p>{{goodsItem.title}}</p>

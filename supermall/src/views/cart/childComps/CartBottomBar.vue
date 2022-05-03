@@ -18,6 +18,7 @@
 </template>
 <script>
 import CheckButton from 'components/content/checkButton/CheckButton.vue'
+
 export default {
   name: 'CartBottomBar',
   components:{
@@ -69,11 +70,11 @@ export default {
         this.$store.state.cartList.forEach(item => item.checked = true)
       }
     },
-    calcClick() {
-      if (!this.isSelectAll) {
-        this.$toast.show('请选择购买的商品 ', 2000)
+  /*   calcClick() {
+      if(!this.isSelectAll) {
+        
       }
-    }
+    }, */
   },
   data () {
    return {}
