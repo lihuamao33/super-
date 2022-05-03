@@ -13,7 +13,8 @@
     </scroll>
     <detail-bottom-bar @addCart="addToCart"></detail-bottom-bar>
     <back-top @click="backClick" v-show="isShowBackTop"></back-top>
-    <!-- <toast-toast :message="message" :show="show"></toast-toast> -->
+    <!-- 把ToastToast.vue组件属性message和show传到toast-toast标签中 -->
+    <toast-toast :message="message" :show="show"></toast-toast> 
   </div>
 </template>
 <script>
@@ -28,7 +29,7 @@ import DetailBottomBar from "./childComps/DetailBottomBar.vue"
 
 import Scroll from "components/common/scroll/Scroll.vue";
 import GoodsList from "components/content/goods/GoodsList.vue";
-//import ToastToast from 'components/common/toast/ToastToast.vue'
+import ToastToast from 'components/common/toast/ToastToast.vue'
 
 import {getDetail, Goods, Shop, GoodsParam, getRecommend} from "network/detail.js";
 import { debounce } from "common/utils.js";
@@ -49,7 +50,7 @@ export default {
     DetailCommentInfo,
     GoodsList,
     DetailBottomBar,
-    /* ToastToast, */
+    ToastToast,
   },
   mixins: [itemListenerMixin, backTopMixin],
   data() {
@@ -65,8 +66,8 @@ export default {
       themeTopYs: [],
       getThemeTopY: null,
       currentIndex: 0,
-      /* message: '',
-      show: false, */
+      message: '',/* 把ToastToazt组件中传来的属性变量放置在这记录 */
+      show: false,
     };
   },
   /**
@@ -187,17 +188,17 @@ export default {
       //this.$store.commit('addCart', product)
       //this.$store.dispatch('addCart',product)
       this.addCart(product).then(res => {
-        /* this.show = true
+        this.show = true
         this.message = res
         setTimeout(() => {
           this.show = false
           this.message = ''
-        }, 1500) */
-        this.$toast.show(res, 20000)
+        }, 1500)
       })
     }
-  },
-};
+  }
+}
+
 </script>
 <style scoped>
 #detail {
