@@ -7,6 +7,8 @@ import './assets/less/index.less'
 
 import router from '../router'
 import store from '../store'
+import http from 'axios'
+import '../api/mock'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
@@ -28,6 +30,8 @@ Vue.use(Col)
 Vue.use(Card)
 Vue.use(Table)
 Vue.use(TableColumn)
+
+Vue.prototype.$http = http
 
 new Vue({
   router,
