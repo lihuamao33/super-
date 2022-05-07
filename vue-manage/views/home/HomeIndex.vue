@@ -116,19 +116,19 @@ export default {
     };
   },
   mounted() {
-    getData().then((res) => {
+    getData().then(res => {
       const { code, data } = res.data;
       if (code === 20000) {
         this.tableData = data.tableData;
         const order = data.orderData;
-        const xData = order.data;
+        const xData = order.date;
         const keyArray = Object.keys(order.data[0]);
         const series = [];
-        keyArray.forEach((key) => {
+        keyArray.forEach(key => {
           series.push({
             name: key,
-            data: order.data.map((item) => item[key]),
-            type: "line",
+            data: order.data.map(item => item[key]),
+            type: "line",/* 折线图，type为line */
           });
         });
         const option = {
@@ -202,7 +202,7 @@ export default {
           tooltip: {
             trigger: "item",
           },
-          color: [
+          color: [     
             "#0f78f4",
             "#dd536b",
             "#9462e5",
